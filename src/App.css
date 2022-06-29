@@ -32,7 +32,40 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+#navbar {
+  display: flex;
+  font-size: 1.2rem;
+  line-height: 2em;
+  background-color: black;
+}
+
+#navbar li {
+  list-style: none;
+  margin: 0 0.5em;
+}
+
+#navbar li a {
+  text-decoration: none;
+  color: white;
+}
+
+.heading {
+  line-height: 2rem;
+  color: Black;
+  font-weight: bold;
+  background-color: yellow;
+}
+/* @media only screen and (max-width: 1200px){
+  /*Tablets [601px -> 1200px]
+} */ 
+@media only screen and (max-width:600px) {
+  html {
+    font-size: 72%;
   }
 }

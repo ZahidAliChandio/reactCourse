@@ -13,11 +13,6 @@ function App() {
         <div className="user">
           Hello,{myFunct(user)}
         </div>
-        <div className="heading">
-          Enter Some Text
-        </div>
-        {/* <magicalForm/> */}
-
         {/* <div className="count">
         {counter}
       </div> */}

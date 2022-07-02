@@ -31,29 +31,42 @@
   color: Black;
   font-weight: bold;
   background-color: yellow;
+  text-align: center;
 }
 .box-container{
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
+}
+.form-container{
+  width: 50%;
+  margin: auto;
 }
 #input-box{
   border:2px solid black;
   margin:2rem auto;
   font-size: 1.2rem;
 }
-#action-btn-container{
-  margin: 1em auto;
-}
 #convert-btn{
-  padding: 0.7em;
-  border-radius: 0.2em;
+  display: inline;
+}
+.btn{
+  font-size: 1.2rem;
+  padding: 0.6em;
+  margin: auto 1em 0 0;
   cursor: pointer;
-  background-color: green;
-  border: none;
   color:white;
+  border: none;
+  border-radius: 0.2em;
+  background-color: green;
+}
+#drop-down-container{
+  display: inline;
+  width: 7.3em;
 }
 #drop-down-content{
   display: none;
+  position: absolute;
+  width: inherit;
   text-align: center;
   z-index: 100;
 }
@@ -62,18 +75,20 @@
   padding: 0.5em 0.2em;
   font-size: 1.2rem;
   background-color: rgb(175, 175, 175);
-  color: black;
+  color: rgb(0, 0, 0);
   text-decoration: none;
 }
 #drop-down-container:hover #drop-down-content{
-    display: block;
+  display: block;
 }
 #drop-down-content a:hover{
-    background-color: rgb(205, 205, 205);
+  background-color: rgb(205, 205, 205);
 }
-.btn{
-  font-size: 1.2rem;
-  padding: 0.5em;
+#clear-btn{
+  display: inline;
+}
+.counter-heading{
+  margin: 0.6em 0 0 0;
 }
 @media only screen and (max-width:600px) {
   html {

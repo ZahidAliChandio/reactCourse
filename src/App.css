@@ -1,15 +1,32 @@
-#nav-container{
-  background-color: black;
+.disp-flex{
   display: flex;
 }
-#logo{
+.color-black{
+  color: black;
+}
+.color-white{
+  color: white;
+}
+.bg-black{
+  background-color: black;
+}
+.bg-white{
+  background-color: white;
+}
+#nav-container{
+  position: relative;
+  display: flex;
+  z-index: 102;
+  border: 1px solid rgb(222, 222, 222);
+}
+#logo{  
   margin: auto 1.2em;
   text-decoration: none;
-  color: white;
   font-weight: bold;
 }
 #navbar {
   display: flex;
+  flex-grow: 1;
   padding-left: 0.7em;
   font-size: 1.2rem;
   line-height: 2.4em;
@@ -20,15 +37,38 @@
 }
 .nav-item{
   text-decoration: none;
-  color: white;
   transition: all 0.2s;
 }
 .nav-item:hover{
   color:rgb(87, 87, 255);
 }
+#mode-container{
+  margin: auto;
+  margin-right: 1em;
+}
+#alert-container{
+  position: relative;
+  display: flex;
+  padding: 0 1em;
+  line-height: 3em;
+  background-color: greenyellow;
+  z-index: 101;
+  transition: all 0.5s ease-in;
+}
+#alert-box{
+  flex-grow: 1;
+}
+#alert-cross{
+  margin: auto;
+  cursor: pointer;
+  height: 2.3em;
+  border: none;
+  outline: none;
+  background-color: yellowgreen;
+  transition: all 0.5s ease-in;
+}
 .heading {
   line-height: 2rem;
-  color: Black;
   font-weight: bold;
   background-color: yellow;
   text-align: center;

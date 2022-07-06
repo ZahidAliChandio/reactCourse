@@ -3,6 +3,12 @@ import Navbar from './components/Navbar';
 import MagicalForm from './components/MagicalForm';
 import React, { useState } from 'react' //imrs short-hand property
 import Alert from './components/Alert';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+import AboutUs from './components/AboutUs';
 // let count = 0;
 // let counter = (() => {
 //   return ++count;
@@ -10,38 +16,53 @@ import Alert from './components/Alert';
 function App() {
   const [mode, setMode] = useState('white');
   const toggleMode = () => {
-    if(mode==='black'){
+    if (mode === 'black') {
       setMode('white');
-      showAlert('Light mode has been enabled','Succes')
+      showAlert('Light mode has been enabled', 'Succes')
+      document.title = 'My App- Light Mood Enabled';
     }
-    else{
+    else {
       setMode('black')
-      showAlert('Dark mode has been enabled','Succes')
+      showAlert('Dark mode has been enabled', 'Succes')
+      document.title = 'My App- Dark Mood Enabled';
+      // setInterval(() => {
+      //   document.title='This is Feb';
+      // }, 1000);
+      // setInterval(() => {
+      //   document.title='Visit this Web';
+      // }, 1500);
     }
   }
-  const [alert,changeAlert]=useState(null);
-  const showAlert=(message,type)=>{
+  const [alert, changeAlert] = useState(null);
+  const showAlert = (message, type) => {
     changeAlert({
-      msg:message,
-      type:type
+      msg: message,
+      type: type
     })
-    setTimeout(() => {
-      changeAlert(null);
-    }, 1000);
+    // setTimeout(() => {
+    //   changeAlert(null);
+    // }, 1000);
   }
   return (
     <>
-      <div className="container">
-        <Navbar logo="Logo" siteTitle="siteTitle" mode={mode} toggleMode={toggleMode} />
-        <Alert alert={alert}/>
-        <div className="user">
-          Hello,{myFunct(user)}
-        </div>
-        {/* <div className="count">
+      <Router>
+        <div className="container">
+          <Navbar logo="Logo" siteTitle="siteTitle" mode={mode} toggleMode={toggleMode} />
+          <Alert alert={alert} />
+          <div className="user">
+            Hello,{myFunct(user)}
+          </div>
+          <Routes>
+            <Route path="/" element={<MagicalForm />}>
+            </Route>
+            <Route path="/about" element={<AboutUs />}>
+            </Route>
+          </Routes>
+          {/* <div className="count">
         {counter}
       </div> */}
-        <MagicalForm />
-      </div>
+        </div>
+      </Router>
     </>
   );
 }

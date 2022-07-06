@@ -63,8 +63,8 @@ export default function MagicalForm(props) {
         <button id="mode-btn" className="mode-btn btn" onClick={changeMode}>Change Mode</button>
         <h1 className='counter-heading'>Text Summary</h1>
         {/* Average time to read one word 0.008 */}
-        <p> {text.split(' ').length} words {text.length} Characters </p>
-        <p> Almost it will take {text.split(' ').length * 0.008} minutes to read this para</p>
+        <p> {text.length>0?text.trim().split(' ').length:0} words {text.length} Characters </p>
+        <p> Almost it will take {text.length>0?text.trim().split(' ').length:0 * 0.008} minutes to read this para</p>
       </div>
     </div>
   )

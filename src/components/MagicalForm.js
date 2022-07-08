@@ -44,27 +44,39 @@ export default function MagicalForm(props) {
       })
     }
   }
+  const copyToClipboard = () => {
+    var text = document.getElementById('input-box');
+    // text.select();
+    text.setSelectionRange(0, 9999);
+    navigator.clipboard.writeText(text.value);
+    props.showAlert('Text Copied', 'Succes');
+  }
   return (
-    <div className='form-container'>
+    <div className='form-container' style={myStyle}>
       <div className="heading" style={myStyle}>
         Enter Some Text
       </div>
-      <div className='box-container' style={myStyle}>
-        <textarea name="text-area" id="input-box" value={text} onChange={handleOnChange} cols="60" rows="10" style={myStyle}></textarea>
-        <div id="drop-down-container">
-          <button id="convert-btn" className="convert-btn btn">Convert To</button>
-          <div id="drop-down-content" className="drop-content">
-            <a href="/" id="UPPER" className="upper-btn drop-down-link" onClick={convertToUpper} style={myStyle}>UPPER CASE</a>
-            <a href="/" id="lower" className="lower-btn drop-down-link" onClick={convertToLower} style={myStyle}>lower case</a>
+      <div className='box-container'>
+        <textarea name="text-area" id="input-box" value={text} onChange={handleOnChange} cols="70" rows="10" style={myStyle}></textarea>
+        <div id="buttons-container">
+          <div id="drop-down-container">
+            <button id="convert-btn" className="convert-btn btn">Convert To</button>
+            <div id="drop-down-content" className="drop-content">
+              <a href="/" id="UPPER" className="upper-btn drop-down-link" onClick={convertToUpper}>UPPER CASE</a>
+              <a href="/" id="lower" className="lower-btn drop-down-link" onClick={convertToLower}>lower case</a>
+            </div>
           </div>
+          <button disabled={text.length === 0} id="clear-btn" className="clear-btn btn" onClick={clearText}>Clear Text</button>
+          <button disabled={text.length === 0} id="numbers-btn" className="numbers-btn btn" onClick={extractNumbers}>Extract Numbers</button>
+          <button disabled={text.length === 0} id="mode-btn" className="mode-btn btn" onClick={copyToClipboard}>Copy Text</button>
+          {/* <button disabled={text.length===0} id="mode-btn" className="mode-btn btn" onClick={changeMode}>Change Mode</button> */}
         </div>
-        <button id="clear-btn" className="clear-btn btn" onClick={clearText}>Clear Text</button>
-        <button id="numbers-btn" className="numbers-btn btn" onClick={extractNumbers}>Extract Numbers</button>
-        <button id="mode-btn" className="mode-btn btn" onClick={changeMode}>Change Mode</button>
-        <h1 className='counter-heading'>Text Summary</h1>
-        {/* Average time to read one word 0.008 */}
-        <p> {text.length>0?text.trim().split(' ').length:0} words {text.length} Characters </p>
-        <p> Almost it will take {text.length>0?text.trim().split(' ').length:0 * 0.008} minutes to read this para</p>
+        <div id="text-summary">
+          <h1 className='counter-heading'>Text Summary</h1>
+          {/* Average time to read one word 0.008 */}
+          <p> {text.length > 0 ? text.trim().split(' ').length : 0} words {text.length} Characters </p>
+          <p> Almost it will take {text.length > 0 ? text.trim().split(' ').length : 0 * 0.008} minutes to read this para</p>
+        </div>
       </div>
     </div>
   )

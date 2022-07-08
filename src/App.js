@@ -3,12 +3,12 @@ import Navbar from './components/Navbar';
 import MagicalForm from './components/MagicalForm';
 import React, { useState } from 'react' //imrs short-hand property
 import Alert from './components/Alert';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
-import AboutUs from './components/AboutUs';
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+// } from "react-router-dom";
+// import AboutUs from './components/AboutUs';
 // let count = 0;
 // let counter = (() => {
 //   return ++count;
@@ -16,13 +16,13 @@ import AboutUs from './components/AboutUs';
 function App() {
   const [mode, setMode] = useState('white');
   const toggleMode = () => {
-    if (mode === 'black') {
+    if (mode === 'dark') {
       setMode('white');
       showAlert('Light mode has been enabled', 'Succes')
       document.title = 'My App- Light Mood Enabled';
     }
     else {
-      setMode('black')
+      setMode('dark')
       showAlert('Dark mode has been enabled', 'Succes')
       document.title = 'My App- Dark Mood Enabled';
       // setInterval(() => {
@@ -39,30 +39,34 @@ function App() {
       msg: message,
       type: type
     })
-    // setTimeout(() => {
-    //   changeAlert(null);
-    // }, 1000);
+    setTimeout(() => {
+      changeAlert(null);
+    }, 1000);
+  }
+  const toggleAlert=()=>{
+    changeAlert(null);
   }
   return (
     <>
-      <Router>
+      {/* <Router> */}
         <div className="container">
           <Navbar logo="Logo" siteTitle="siteTitle" mode={mode} toggleMode={toggleMode} />
-          <Alert alert={alert} />
-          <div className="user">
+          <Alert alert={alert} toggleAlert={toggleAlert}/>
+          {/* <div className="user">
             Hello,{myFunct(user)}
-          </div>
-          <Routes>
-            <Route path="/" element={<MagicalForm />}>
-            </Route>
-            <Route path="/about" element={<AboutUs />}>
-            </Route>
-          </Routes>
+          </div> */}
+          {/* <Routes> */}
+            {/* <Route path="/" element={<MagicalForm />}> */}
+            <MagicalForm showAlert={showAlert} mode={mode}/>
+            {/* </Route> */}
+            {/* <Route path="/about" element={<AboutUs />}> */}
+            {/* </Route> */}
+          {/* </Routes> */}
           {/* <div className="count">
         {counter}
       </div> */}
         </div>
-      </Router>
+      {/* </Router> */}
     </>
   );
 }
